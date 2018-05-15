@@ -9,6 +9,7 @@ if(!internauteEstConnecteEtEstAdmin()) {
     exit();
 }
 
+
 //--------------------- Liens produits -------------------------//
 
 
