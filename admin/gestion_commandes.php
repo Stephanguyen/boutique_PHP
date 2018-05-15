@@ -6,7 +6,7 @@ if(!internauteEstConnecteEtEstAdmin()) {
     exit();
 }
 
-
+test
 
 ?>
 
