@@ -28,7 +28,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression'){
 //--------------------- Affichage -------------------------//
 if(isset($_GET['action']) && $_GET['action'] == 'affichage'){
 
-$resultat = $pdo->query('SELECT p.id_produit, p.reference, p.categorie, p.titre, p.description, p.couleur, p.taille, p.public, p.photo, p.prix, p.stock, d.id_details_commande, d.id_commande, d.quantite, c.id_membre, c.montant, c.date_enregistrement, c.etat FROM produit p, detail_commande d, commande c WHERE p.id_produit = d.id_produit AND d.id_commande = c.id_commande ORDER BY id_commande');
+$resultat = $pdo->query('SELECT p.id_produit, p.reference, p.categorie, p.titre, p.description, p.couleur, p.taille, p.public, p.photo, p.prix, p.stock, d.id_details_commande, d.id_commande, d.quantite, c.id_membre, c.montant, c.date_enregistrement, c.etat FROM produit p, details_commande d, commande c WHERE p.id_produit = d.id_produit AND d.id_commande = c.id_commande ORDER BY id_commande');
 $content .= '<h2>Affichage des commandes</h2>';
 $content .= 'Nombre de commande(s) dans la boutique : ' . $resultat->rowCount();
 
@@ -72,7 +72,7 @@ $content .= '</table><br><hr><br>';
 if(isset($_POST['status'])){
 
     
-    $pdo->exec("UPDATE commande SET etat = '$_POST[status]' WHERE id_commande = (SELECT id_commande FROM detail_commande WHERE id_details_commande = $_POST[id_com])");
+    $pdo->exec("UPDATE commande SET etat = '$_POST[status]' WHERE id_commande = (SELECT id_commande FROM details_commande WHERE id_details_commande = $_POST[id_com])");
 }
 
 
